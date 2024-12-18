@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class Lending {
 
     @ManyToOne
     @JoinColumn(name="idc", nullable = false)
+
     private Consumer consumer;
 
     public Integer getId(){

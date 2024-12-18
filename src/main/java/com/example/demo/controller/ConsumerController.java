@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.BookDTO;
+import com.example.demo.DTO.ConsumerDTO;
 import com.example.demo.entity.Book;
 import com.example.demo.service.ConsumerService;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ public class ConsumerController {
        this.consumerService= consumerService;
    }
 
-    /*@GetMapping("/getConsumerById/{id}")
+    @GetMapping("/getConsumerById/{id}")
     public ResponseEntity<ConsumerDTO> getConsumer(@PathVariable("id") Integer id) {
         ConsumerDTO consumerDTO = consumerService.getConsumerById(id);
         return ResponseEntity.ok(consumerDTO);
-    }
+    }/*
 
     @DeleteMapping("/deleteConsumer/{id}")
     public ResponseEntity<String> deleteConsumer(@PathVariable("id") Integer id){
@@ -40,10 +41,10 @@ public class ConsumerController {
         ConsumerDTO savedConsumer= consumerService.addConsumer(consumerDTO);
         return ResponseEntity.ok(savedConsumer);
     }
-
+*/
     @GetMapping("/findAll")
     public ResponseEntity<List<ConsumerDTO>> findAll(){
         List<ConsumerDTO> consumersDTO = consumerService.findAll();
         return ResponseEntity.ok(consumersDTO);
-    }*/
+    }
 }

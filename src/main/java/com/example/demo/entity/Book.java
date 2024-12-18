@@ -14,7 +14,7 @@ public class Book {
     private String title;
     @Column(name="author")
     private String author;
-    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Lending> lendings;
 
     public String getId() {

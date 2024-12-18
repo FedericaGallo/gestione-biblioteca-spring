@@ -92,3 +92,22 @@ book deleted
     "title": "Il Gattopardo"
 }
 ```
+### Richiesta
+* URI: /consumer/getConsumerById/{id}
+* verbo HTTP:GET
+* Corpo: (empty)
+
+### Risposta
+```http
+{
+     "id": 3,
+    "name": "Federica",
+    "lastName": "Gallo",
+    "lendings": [
+        {
+            "bookAuthor": "Primo Levi",
+            "bookTitle": "Se questo è un uomo"
+        }
+    ]
+}
+```
