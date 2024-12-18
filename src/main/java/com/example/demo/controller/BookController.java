@@ -6,6 +6,8 @@ import com.example.demo.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -30,6 +32,18 @@ public class BookController {
     public ResponseEntity<BookDTO> updateBook(@PathVariable("id") Integer id, @RequestBody BookDTO bookDTO){
         BookDTO savedBook = bookService.updateBook(id, bookDTO);
         return ResponseEntity.ok(savedBook);
+    }
+
+    @PostMapping("/createBook")
+    public ResponseEntity<BookDTO> addBook(@RequestBody BookDTO bookDTO){
+        BookDTO savedBook = bookService.addBook(bookDTO);
+        return ResponseEntity.ok(savedBook);
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<BookDTO>> findAll(){
+       List<BookDTO> booksDTO = bookService.findAll();
+        return ResponseEntity.ok(booksDTO);
     }
 
 

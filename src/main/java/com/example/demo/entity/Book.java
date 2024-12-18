@@ -8,17 +8,17 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name ="idb")
-    private Integer id;
+    private String id;
     @Column(name="title")
     private String title;
     @Column(name="author")
     private String author;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
