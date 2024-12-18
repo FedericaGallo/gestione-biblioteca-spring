@@ -17,14 +17,14 @@ public class BookService {
     public BookService(BookRepository bookRepository){
         this.bookRepository=bookRepository;
     }
-    public Book getBookById(Integer id){
+    public Book getBookById(String id){
         Optional<Book> book = bookRepository.findById(id);
         if(book.isPresent()){
             return book.get();
         }else throw new EntityNotFoundException();
 
     }
-    public void deleteBook(Integer id){
+    public void deleteBook(String id){
         Optional<Book> book = bookRepository.findById(id);
         if(book.isPresent()){
             bookRepository.delete(book.get());
@@ -32,7 +32,7 @@ public class BookService {
 
     }
 
-    public BookDTO updateBook(Integer id, BookDTO bookDTO){
+    public BookDTO updateBook(String id, BookDTO bookDTO){
         Optional<Book> existingBook = bookRepository.findById(id);
         if(existingBook.isPresent()){
            Book bookToSave= BookConverter.DTOToEntityUpdate(bookDTO, existingBook.get());

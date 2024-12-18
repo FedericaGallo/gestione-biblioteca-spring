@@ -16,20 +16,20 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/getBookById/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable("id") Integer id) {
+    public ResponseEntity<Book> getBook(@PathVariable("id") String id) {
         Book book = bookService.getBookById(id);
         return ResponseEntity.ok(book);
     }
 
     @DeleteMapping("/deleteBook/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable("id") Integer id){
+    public ResponseEntity<String> deleteBook(@PathVariable("id") String id){
         bookService.deleteBook(id);
         return ResponseEntity.ok("not found");
 
     }
 
     @PutMapping("/updateBook/{id}")
-    public ResponseEntity<BookDTO> updateBook(@PathVariable("id") Integer id, @RequestBody BookDTO bookDTO){
+    public ResponseEntity<BookDTO> updateBook(@PathVariable("id") String id, @RequestBody BookDTO bookDTO){
         BookDTO savedBook = bookService.updateBook(id, bookDTO);
         return ResponseEntity.ok(savedBook);
     }
