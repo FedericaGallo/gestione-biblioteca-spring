@@ -11,16 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class BookService {
     private final BookRepository bookRepository;
     public BookService(BookRepository bookRepository){
         this.bookRepository=bookRepository;
     }
-    public Book getBookById(String id){
+    public BookDTO getBookById(String id){
         Optional<Book> book = bookRepository.findById(id);
         if(book.isPresent()){
-            return book.get();
+            return BookConverter.EntityToDTO(book.get());
         }else throw new EntityNotFoundException();
 
     }

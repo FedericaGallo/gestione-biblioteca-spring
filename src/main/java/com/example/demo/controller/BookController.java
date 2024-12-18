@@ -16,8 +16,8 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/getBookById/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable("id") String id) {
-        Book book = bookService.getBookById(id);
+    public ResponseEntity<BookDTO> getBook(@PathVariable("id") String id) {
+        BookDTO book = bookService.getBookById(id);
         return ResponseEntity.ok(book);
     }
 
@@ -45,11 +45,5 @@ public class BookController {
        List<BookDTO> booksDTO = bookService.findAll();
         return ResponseEntity.ok(booksDTO);
     }
-
-
-
-
-
-
 
 }

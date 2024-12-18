@@ -2,6 +2,7 @@ package com.example.demo.utils;
 
 import com.example.demo.DTO.BookDTO;
 import com.example.demo.entity.Book;
+import java.util.UUID;
 
 public class BookConverter {
     public static Book DTOToEntityUpdate(BookDTO bookDTO, Book book){
@@ -23,6 +24,9 @@ public class BookConverter {
         if(bookDTO.getTitle() != null && !bookDTO.getTitle().isEmpty()){
             book.setTitle(bookDTO.getTitle());
         }
+        UUID uuid = UUID.randomUUID();
+        book.setId(uuid.toString());
+        System.out.println(uuid.toString());
         return book;
     }
 

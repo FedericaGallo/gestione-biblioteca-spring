@@ -74,3 +74,21 @@
 ```http
 book deleted
 ```
+### Richiesta
+* URI: /book/createBook
+* verbo HTTP:POST
+* Corpo:
+```http
+{
+"title": "Il Gattopardo",
+"author": "Giuseppe Tomasi di Lampedusa"
+}
+```
+### Risposta
+```http
+{
+    "id": "08af9df8-b156-44b1-b8d3-12e3da464350",
+    "author": "Giuseppe Tomasi di Lampedusa",
+    "title": "Il Gattopardo"
+}
+```
