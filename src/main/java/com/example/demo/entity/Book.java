@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "books")
 public class Book {
@@ -13,6 +15,8 @@ public class Book {
     private String title;
     @Column(name="author")
     private String author;
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
+    private List<Lending> lendings;
 
     public String getId() {
         return id;

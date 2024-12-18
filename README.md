@@ -48,3 +48,29 @@
     }
 ]
 ```
+### Richiesta
+* URI: /book/updateBook/{id}
+* verbo HTTP:PUT
+* Corpo:
+```http
+{
+    "title": "Decameron",
+    "author": "Giovanni Boccaccio"
+}
+```
+### Risposta
+```http
+{
+    "id": "B004",
+    "author": "Giovanni Boccaccio",
+    "title": "Decameron"
+}
+```
+### Richiesta
+* URI: /book/deleteBook/{id}
+* verbo HTTP:DELETE
+* Corpo: (empty)
+### Risposta
+```http
+book deleted
+```
