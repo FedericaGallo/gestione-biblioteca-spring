@@ -25,6 +25,13 @@ public class BookService {
         }else throw new EntityNotFoundException();
 
     }
+    public Book getBookEntityById(String id){
+        Optional<Book> book = bookRepository.findById(id);
+        if(book.isPresent()){
+            return book.get();
+        }else throw new EntityNotFoundException();
+
+    }
     public void deleteBook(String id){
         Optional<Book> book = bookRepository.findById(id);
         if(book.isPresent()){

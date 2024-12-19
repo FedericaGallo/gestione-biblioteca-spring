@@ -14,28 +14,44 @@ import java.util.Optional;
 @Service
 public class ConsumerService {
     private final ConsumerRepository consumerRepository;
-    public ConsumerService(ConsumerRepository consumerRepository){
-        this.consumerRepository= consumerRepository;
-    }
-public ConsumerDTO getConsumerById(Integer id){
-    Optional<Consumer> consumer = consumerRepository.findById(id);
-    if(consumer.isPresent()){
-        return ConsumerConverter.entityToDTO(consumer.get());
-    }else throw new EntityNotFoundException();
-}
 
-    public List<ConsumerDTO> findAll(){
-       List<Consumer> consumers = consumerRepository.findAll();
-       List<ConsumerDTO> consumersDTO = new ArrayList<>();
-       for (Consumer consumer : consumers){
-           ConsumerDTO consumerDTO = new ConsumerDTO();
-           consumerDTO.setName(consumer.getName());
-           consumerDTO.setLastName(consumer.getLastName());
-           consumerDTO.setId(consumer.getId());
-           System.out.println(consumer.getLendings());
-           consumersDTO.add(consumerDTO);
-       }
-       return consumersDTO;
+    public ConsumerService(ConsumerRepository consumerRepository) {
+        this.consumerRepository = consumerRepository;
+    }
+
+    public ConsumerDTO getConsumerById(Integer id) {
+        Optional<Consumer> consumer = consumerRepository.findById(id);
+        if (consumer.isPresent()) {
+            return ConsumerConverter.entityToDTO(consumer.get());
+        } else throw new EntityNotFoundException();
+    }
+
+    public List<ConsumerDTO> findAll() {
+        List<Consumer> consumers = consumerRepository.findAll();
+        List<ConsumerDTO> consumersDTO = new ArrayList<>();
+        for (Consumer consumer : consumers) {
+           consumersDTO.add(ConsumerConverter.entityToDTO(consumer));
+        }
+        return consumersDTO;
+    }
+
+    public void deleteConsumer(Integer id) {
+        Optional<Consumer> consumer = consumerRepository.findById(id);
+        if (consumer.isPresent()) {
+            consumerRepository.delete(consumer.get());
+        } else throw new EntityNotFoundException();
+    }
+
+    public ConsumerDTO updateConsumer(Integer id, ConsumerDTO consumerDTO) {
+        Optional<Consumer> consumer = consumerRepository.findById(id);
+        if (consumer.isPresent()) {
+           Consumer consumerSaved= consumerRepository.save(ConsumerConverter.DTOToEntityUpdate(consumerDTO, consumer.get()));
+           return ConsumerConverter.entityToDTOSave(consumerSaved);
+        } else throw new EntityNotFoundException();
+    }
+    public ConsumerDTO addConsumer(ConsumerDTO consumerDTO){
+       Consumer consumer=  consumerRepository.save(ConsumerConverter.DTOToEntityCreate(consumerDTO));
+       return ConsumerConverter.entityToDTOSave(consumer);
     }
 
 }

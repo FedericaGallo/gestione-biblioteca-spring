@@ -33,4 +33,35 @@ public class ConsumerConverter {
        }
        return consumerDTO;
    }
+
+    public static ConsumerDTO entityToDTOSave(Consumer consumer){
+        ConsumerDTO consumerDTO = new ConsumerDTO();
+        consumerDTO.setId(consumer.getId());
+        consumerDTO.setName(consumer.getName());
+        consumerDTO.setLastName(consumer.getLastName());
+        return consumerDTO;
+    }
+
+   public static Consumer DTOToEntityUpdate(ConsumerDTO consumerDTO, Consumer consumer){
+       if(consumerDTO.getName() != null && !consumerDTO.getName().isEmpty()){
+           consumer.setName(consumerDTO.getName());
+       }
+       if(consumerDTO.getLastName() != null && !consumerDTO.getLastName().isEmpty()){
+           consumer.setLastName(consumerDTO.getLastName());
+       }
+       return consumer;
+
+   }
+
+    public static Consumer DTOToEntityCreate(ConsumerDTO consumerDTO){
+       Consumer consumer = new Consumer();
+        if(consumerDTO.getName() != null && !consumerDTO.getName().isEmpty()){
+            consumer.setName(consumerDTO.getName());
+        }
+        if(consumerDTO.getLastName() != null && !consumerDTO.getLastName().isEmpty()){
+            consumer.setLastName(consumerDTO.getLastName());
+        }
+        return consumer;
+
+    }
 }

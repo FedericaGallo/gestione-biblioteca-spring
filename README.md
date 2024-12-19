@@ -111,3 +111,125 @@ book deleted
     ]
 }
 ```
+### Richiesta
+* URI: /consumer/updateConsumer/{id}
+* verbo HTTP:PUT
+* Corpo:
+```http
+{
+    "name": "Federica",
+    "lastName": "Gallo"
+}
+```
+### Risposta
+```http
+{
+     "id": 3,
+    "name": "Federica",
+    "lastName": "Gallo",
+    
+}
+```
+### Richiesta
+* URI: /consumer/findAll
+* verbo HTTP:GET
+* Corpo: (empty)
+
+### Risposta
+```http
+{
+        "id": 4,
+        "name": "Federica",
+        "lastName": "Gallo",
+        "lendings": [
+            {
+                "bookAuthor": "Primo Levi",
+                "bookTitle": "Se questo è un uomo"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Mario",
+        "lastName": "Rossi",
+        "lendings": []
+    }
+]
+```
+### Richiesta
+* URI: /lending/findAll
+* verbo HTTP:GET
+* Corpo: (empty)
+
+### Risposta
+```http
+[
+    {
+        "bookAuthor": "Primo Levi",
+        "bookTitle": "Se questo è un uomo",
+        "bookId": "B005",
+        "consumerName": "Federica",
+        "consumerLastName": "Gallo",
+        "consumerId": 4,
+        "startLoan": "2021-04-15",
+        "endLoan": "2021-05-15"
+    },
+    {
+        "bookAuthor": "Dante Alighieri",
+        "bookTitle": "La Divina Commedia",
+        "bookId": "B002",
+        "consumerName": "Mario",
+        "consumerLastName": "Rossi",
+        "consumerId": 6,
+        "startLoan": "2021-04-30",
+        "endLoan": "2021-05-30"
+    }
+]
+```
+### Richiesta
+* URI: /lending/getLendingById/{id}
+* verbo HTTP:GET
+* Corpo: (empty)
+
+### Risposta
+```http
+
+    {
+        "bookAuthor": "Primo Levi",
+        "bookTitle": "Se questo è un uomo",
+        "bookId": "B005",
+        "consumerName": "Federica",
+        "consumerLastName": "Gallo",
+        "consumerId": 4,
+        "startLoan": "2021-04-15",
+        "endLoan": "2021-05-15"
+    }
+
+```
+### Richiesta
+* URI: /lending/addLending
+* verbo HTTP:POST
+* Corpo: 
+```http
+{
+"bookId": "BOO5",
+"consumerId": 6,
+"startLoan": "2024/08/20",
+"endLoan": "2024/08/30"
+}
+```
+### Risposta
+```http
+
+    {
+        "bookAuthor": "Primo Levi",
+        "bookTitle": "Se questo è un uomo",
+        "bookId": "B005",
+        "consumerName": "Federica",
+        "consumerLastName": "Gallo",
+        "consumerId": 4,
+        "startLoan": "2021-04-15",
+        "endLoan": "2021-05-15"
+    }
+
+```

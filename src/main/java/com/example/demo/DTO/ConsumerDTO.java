@@ -1,9 +1,11 @@
 package com.example.demo.DTO;
 
 import com.example.demo.entity.Lending;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConsumerDTO {
     private Integer id;
     private String name;
@@ -33,11 +35,12 @@ public class ConsumerDTO {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public void setLendings(List<LendingDTO> lendings){
+
+    public void setLendings(List<LendingDTO> lendings) {
         this.lendings = lendings;
     }
 
-    public List<LendingDTO> getLendings(){
+    public List<LendingDTO> getLendings() {
         return lendings;
     }
 }
