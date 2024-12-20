@@ -1,5 +1,5 @@
-### Contratto API
-
+# Contratto API
+## Book
 ### Richiesta
 * URI: /book/getBookById/{id}
 * verbo HTTP:GET
@@ -92,6 +92,7 @@ book deleted
     "title": "Il Gattopardo"
 }
 ```
+## Consumer
 ### Richiesta
 * URI: /consumer/getConsumerById/{id}
 * verbo HTTP:GET
@@ -156,6 +157,7 @@ book deleted
     }
 ]
 ```
+## Lending
 ### Richiesta
 * URI: /lending/findAll
 * verbo HTTP:GET
