@@ -138,7 +138,8 @@ book deleted
 
 ### Risposta
 ```http
-{
+[
+    {
         "id": 4,
         "name": "Federica",
         "lastName": "Gallo",
@@ -156,6 +157,14 @@ book deleted
         "lendings": []
     }
 ]
+```
+### Richiesta
+* URI: /consumer/deleteConsumer/{id}
+* verbo HTTP:DELETE
+* Corpo: (empty)
+### Risposta
+```http
+consumer deleted
 ```
 ## Lending
 ### Richiesta
@@ -209,12 +218,39 @@ book deleted
 
 ```
 ### Richiesta
-* URI: /lending/addLending
+* URI: /lending/createLending
 * verbo HTTP:POST
 * Corpo: 
 ```http
 {
-"bookId": "BOO5",
+"bookId": "B005",
+"consumerId": 6,
+"startLoan": "2024/08/20",
+"endLoan": "2024/08/30"
+}
+```
+### Risposta
+```http
+
+    {
+        "bookAuthor": "Primo Levi",
+        "bookTitle": "Se questo è un uomo",
+        "bookId": "B005",
+        "consumerName": "Federica",
+        "consumerLastName": "Gallo",
+        "consumerId": 4,
+        "startLoan": "2021-04-15",
+        "endLoan": "2021-05-15"
+    }
+
+```
+### Richiesta
+* URI: /lending/updateLending
+* verbo HTTP:POST
+* Corpo:
+```http
+{
+"bookId": "B005",
 "consumerId": 6,
 "startLoan": "2024/08/20",
 "endLoan": "2024/08/30"

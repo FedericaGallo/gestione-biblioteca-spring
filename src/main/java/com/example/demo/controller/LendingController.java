@@ -27,7 +27,7 @@ public class LendingController {
 
     }
 
-    @PutMapping("/updateComsumer/{id}")
+    @PutMapping("/updateLending/{id}")
     public ResponseEntity<LendingDTO> updateLending(@PathVariable("id") Integer id, @RequestBody LendingDTO lendingDTO) {
         LendingDTO savedLending = lendingService.updateLending(id, lendingDTO);
         return ResponseEntity.ok(savedLending);

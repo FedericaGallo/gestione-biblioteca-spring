@@ -42,6 +42,14 @@ public class LendingService {
         Optional<Lending> existingLending = lendingRepository.findById(id);
         if(existingLending.isPresent()){
             Lending lendingToSave= LendingConverter.DTOtoEntityUpdate(lendingDTO, existingLending.get());
+            if (!lendingDTO.getBookId().isEmpty() && lendingDTO.getBookId() != null ){
+                Book book = bookRepository.findById(lendingDTO.getBookId()).orElseThrow(() -> new RuntimeException("Book not found"));
+                lendingToSave.setBook(book);
+            }
+            if (lendingDTO.getBookId() != null ){
+                Consumer consumer = consumerRepository.findById(lendingDTO.getConsumerId()).orElseThrow(() -> new RuntimeException("Book not found"));
+                lendingToSave.setConsumer(consumer);
+            }
             Lending lendingSaved= lendingRepository.save(lendingToSave);
             return LendingConverter.EntityToDTO(lendingSaved);
         }else throw new EntityNotFoundException();
